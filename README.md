@@ -23,8 +23,10 @@ wsl
 1. Build the Docker Image:
 build the container image with ROS 2 Humble and all required dependencies:
 ```bash
+cd ~/docker_ws
 chmod +x build.sh run.sh exec.sh
 ./build.sh
+cd ..
 ```
 2. Start and Enter the Container:
 launch the container with GUI support enabled:
@@ -39,7 +41,7 @@ whenever you need extra terminal instances inside the same running container (e.
 Build the Workspace
 Once inside the running container, compile the ROS 2 packages and source the environment:
 ```bash
-cd ~/ros2_ws
+cd root/ros_workspace
 colcon build --symlink-install
 source install/setup.bash
 ```
