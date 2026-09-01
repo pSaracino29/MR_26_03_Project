@@ -1,0 +1,11 @@
+FROM ros:humble
+
+RUN apt update -y && apt install -y \
+    ros-humble-xacro \
+    ros-humble-ros-gz-sim \
+    ros-humble-ros-gz-bridge \
+    ros-humble-ros-gz \
+    ros-humble-rqt-image-view \
+    ros-humble-slam-toolbox \
+    ros-humble-navigation2 \
+    ros-humble-nav2-bringup \
