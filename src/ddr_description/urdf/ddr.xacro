@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot name="ddr" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- ============================================= -->
+  <!-- Proprieta' / dimensioni                        -->
+  <!-- ============================================= -->
+  <xacro:property name="chassis_length" value="2.0"/>
+  <xacro:property name="chassis_width"  value="1.0"/>
+  <xacro:property name="chassis_height" value="0.5"/>
+  <xacro:property name="chassis_mass"   value="1.14395"/>
+
+  <xacro:property name="wheel_radius"     value="0.4"/>
+  <xacro:property name="wheel_length"     value="0.2"/>
+  <xacro:property name="wheel_mass"       value="1.0"/>
+  <xacro:property name="wheel_x_offset"   value="-0.5"/>
+  <xacro:property name="wheel_y_offset"   value="0.6"/>
+
+  <xacro:property name="caster_radius" value="0.2"/>
+  <xacro:property name="caster_mass"   value="1.0"/>
+  <xacro:property name="caster_x" value="0.8"/>
+  <xacro:property name="caster_z" value="-0.2"/>
+
+  <!-- ============================================= -->
+  <!-- base_link (chassis)                            -->
+  <!-- ============================================= -->
+  <link name="base_link">
+    <visual>
+      <geometry>
+        <box size="${chassis_length} ${chassis_width} ${chassis_height}"/>
+      </geometry>
+      <material name="blue"/>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="${chassis_length} ${chassis_width} ${chassis_height}"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="${chassis_mass}"/>
+      <inertia ixx="0.095329" ixy="0" ixz="0"
+               iyy="0.381317" iyz="0"
+               izz="0.476646"/>
+    </inertial>
+  </link>
+
+  <!-- ============================================= -->
+  <!-- Ruote motrici (differential drive)             -->
+  <!-- ============================================= -->
+  <xacro:macro name="wheel" params="prefix y_offset">
+    <link name="${prefix}_wheel">
+      <visual>
+        <origin xyz="0 0 0" rpy="1.5707963 0 0"/>
+        <geometry>
+          <cylinder radius="${wheel_radius}" length="${wheel_length}"/>
+        </geometry>
+        <material name="red"/>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="1.5707963 0 0"/>
+        <geometry>
+          <cylinder radius="${wheel_radius}" length="${wheel_length}"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <mass value="${wheel_mass}"/>
+        <inertia ixx="0.043333" ixy="0" ixz="0"
+                 iyy="0.043333" iyz="0"
+                 izz="0.08"/>
+      </inertial>
+    </link>
+
+    <joint name="${prefix}_wheel_joint" type="continuous">
+      <parent link="base_link"/>
+      <child link="${prefix}_wheel"/>
+      <origin xyz="${wheel_x_offset} ${y_offset} 0" rpy="0 0 0"/>
+      <axis xyz="0 1 0"/>
+    </joint>
+  </xacro:macro>
+
+  <xacro:wheel prefix="left"  y_offset="${wheel_y_offset}"/>
+  <xacro:wheel prefix="right" y_offset="-${wheel_y_offset}"/>
+
+  <!-- ============================================= -->
+  <!-- Caster wheel (ruota folle di appoggio)         -->
+  <!-- ============================================= -->
+  
+  <link name="caster">
+    <visual>
+      <geometry>
+        <sphere radius="${caster_radius}"/>
+      </geometry>
+      <material name="red"/>
+    </visual>
+    <collision>
+      <geometry>
+        <sphere radius="${caster_radius}"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="${caster_mass}"/>
+      <inertia ixx="0.016" ixy="0" ixz="0"
+               iyy="0.016" iyz="0"
+               izz="0.016"/>
+    </inertial>
+  </link>
+
+  <joint name="caster_wheel_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="caster"/>
+    <origin xyz="${caster_x} 0 ${caster_z}" rpy="0 0 0"/>
+  </joint>
+
+</robot>
