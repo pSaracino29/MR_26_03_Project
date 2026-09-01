@@ -20,19 +20,19 @@ Open your terminal in VS Code and ensure you are inside WSL:
 ```bash
 wsl
 ``` 
-1. Build the Docker Image
-Build the container image with ROS 2 Humble and all required dependencies:
+1. Build the Docker Image:
+build the container image with ROS 2 Humble and all required dependencies:
 ```bash
 chmod +x build.sh run.sh exec.sh
 ./build.sh
 ```
-2. Start and Enter the Container
-Launch the container with GUI support enabled:
+2. Start and Enter the Container:
+launch the container with GUI support enabled:
 ```bash
 ./run.sh
 ```
-3. Open Additional Terminals (Multi-terminal Workflow)
-Whenever you need extra terminal instances inside the same running container (e.g., to run nodes in parallel), open a new terminal tab in VS Code and run:
+3. Open Additional Terminals (Multi-terminal Workflow):
+whenever you need extra terminal instances inside the same running container (e.g., to run nodes in parallel), open a new terminal tab in VS Code and run:
 ```bash
 ./exec.sh
 ```
