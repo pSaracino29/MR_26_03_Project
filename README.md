@@ -6,9 +6,9 @@ A ROS 2 Humble project featuring a differential drive robot simulated in Gazebo,
 
 ## Prerequisites
 
-* [Docker Desktop](https://www.docker.com/) (with WSL 2 backend enabled)
+* [Docker Desktop](https://www.docker.com/) (with WSL backend enabled)
 * [Visual Studio Code](https://code.visualstudio.com/)
-* WSL 2 configured on Windows (or a native Linux environment)
+* WSL configured on Windows (or a native Linux environment)
 * An X-server setup (like VcXsrv) or WSLg for Gazebo/GUI forwarding
 
 ---
@@ -19,3 +19,53 @@ Open your terminal in VS Code and ensure you are inside WSL:
 
 ```bash
 wsl
+
+1. Build the Docker Image
+Build the container image with ROS 2 Humble and all required dependencies:
+
+chmod +x build.sh run.sh exec.sh
+./build.sh
+
+2. Start and Enter the Container
+Launch the container with GUI support enabled:
+
+./run.sh
+
+3. Open Additional Terminals (Multi-terminal Workflow)
+Whenever you need extra terminal instances inside the same running container (e.g., to run nodes in parallel), open a new terminal tab in VS Code and run:
+
+./exec.sh
+
+Build the Workspace
+Once inside the running container, compile the ROS 2 packages and source the environment:
+
+cd ~/ros2_ws
+colcon build --symlink-install
+source install/setup.bash
+
+Tip: Remember to run source install/setup.bash in every new container terminal instance (opened via ./exec.sh).
+
+Running the Simulation
+1. Visualize the Robot and Environment
+Inside the container, start the Gazebo simulation to inspect the robot model and world:
+
+ros2 launch ddr_description gazebo.launch.py
+
+2. Autonomous Navigation & Mapping
+Before starting the autonomous pipeline, terminate the previous launch process (Ctrl + C).
+
+Then, launch the autonomous mapping and exploration nodes:
+
+ros2 launch ddr_exploration exploration.launch.py
+
+
+
+
+
+
+
+
+
+
+
+
