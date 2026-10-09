@@ -1,0 +1,7 @@
+{
+  "run_id": "020",
+  "success_simulation": false,
+  "reason": "collision",
+  "collided_with": "cylinder::cylinder_link::cylinder_collision",
+  "duration_s": 74.2
+}

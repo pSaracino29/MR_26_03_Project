@@ -1,0 +1,7 @@
+{
+  "run_id": "008",
+  "success_simulation": false,
+  "reason": "collision",
+  "collided_with": "box_3::box_link::box_collision",
+  "duration_s": 119.1
+}

@@ -1,0 +1,24 @@
+LISTA MARKER ARUCO RILEVATI (media di tutte le osservazioni)
+Sistema di riferimento: /map
+============================================================
+
+ID MARKER: 0
+  Osservazioni totali: 105
+  Posizione media [x, y, z]: [-13.494, 1.654, 0.161] metri
+  Deviazione standard [x, y, z]: [0.408, 0.235, 0.002] metri
+------------------------------------------------------------
+ID MARKER: 1
+  Osservazioni totali: 109
+  Posizione media [x, y, z]: [5.929, 1.362, 0.160] metri
+  Deviazione standard [x, y, z]: [0.619, 0.450, 0.004] metri
+------------------------------------------------------------
+ID MARKER: 2
+  Osservazioni totali: 131
+  Posizione media [x, y, z]: [5.564, -7.395, 0.158] metri
+  Deviazione standard [x, y, z]: [0.152, 0.274, 0.003] metri
+------------------------------------------------------------
+ID MARKER: 3
+  Osservazioni totali: 131
+  Posizione media [x, y, z]: [-13.804, -7.717, 0.161] metri
+  Deviazione standard [x, y, z]: [0.261, 0.465, 0.003] metri
+------------------------------------------------------------
