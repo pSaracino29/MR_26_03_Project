@@ -68,7 +68,7 @@ ros2 launch ddr_assignments assignments.launch.py
 ```
 
 4. Process automation via supervisor:
-default max_runs = 10. If you want to modify it, go in ddr_assignments/sim_supervisor.py
+default max_runs = 10. If you want to modify it, go in ddr_assignments/sim_supervisor.py -->
 self.declare_parameter('max_runs', ...)
 
 ```bash
