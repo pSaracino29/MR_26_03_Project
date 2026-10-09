@@ -20,7 +20,7 @@ class SimulationSupervisor(Node):
     def __init__(self):
         super().__init__('sim_supervisor')
 
-        self.declare_parameter('max_runs', 20)
+        self.declare_parameter('max_runs', 10)
         self.declare_parameter('robot_name', 'ddr')
         self.declare_parameter('ignore_names', ['ground_plane'])
         # secondi (tempo reale) dopo l'avvio del launch in cui i contatti vengono ignorati
